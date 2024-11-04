@@ -1,2 +1,2 @@
 led7_seg.c:9:6:displaySEG	16	static
-led7_seg.c:18:6:display7SEG	72	static
+led7_seg.c:19:6:display7SEG	24	static
