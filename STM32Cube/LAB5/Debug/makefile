@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (12.3.rel1)
+# Toolchain: GNU Tools for STM32 (9-2020-q2-update)
 ################################################################################
 
 -include ../makefile.init
@@ -12,6 +12,7 @@ RM := rm -rf
 -include Drivers/STM32F1xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -43,9 +44,6 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 EXECUTABLES += \
 LAB5_UART_ADC.elf \
 
-MAP_FILES += \
-LAB5_UART_ADC.map \
-
 SIZE_OUTPUT += \
 default.size.stdout \
 
@@ -66,8 +64,8 @@ all: main-build
 main-build: LAB5_UART_ADC.elf secondary-outputs
 
 # Tool invocations
-LAB5_UART_ADC.elf LAB5_UART_ADC.map: $(OBJS) $(USER_OBJS) C:\Users\Admin\prVXL_VDK\stm32cube\LAB5\STM32\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "LAB5_UART_ADC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Admin\prVXL_VDK\stm32cube\LAB5\STM32\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB5_UART_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+LAB5_UART_ADC.elf: $(OBJS) $(USER_OBJS) C:\Users\Admin\labVDK-VXL\STM32Cube\LAB5\STM32F103C6UX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "LAB5_UART_ADC.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Admin\labVDK-VXL\STM32Cube\LAB5\STM32F103C6UX_FLASH.ld" --specs=nosys.specs -Wl,-Map="LAB5_UART_ADC.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -93,7 +91,7 @@ LAB5_UART_ADC.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 
 # Other Targets
 clean:
-	-$(RM) LAB5_UART_ADC.bin LAB5_UART_ADC.elf LAB5_UART_ADC.hex LAB5_UART_ADC.list LAB5_UART_ADC.map default.size.stdout
+	-$(RM) $(OBJCOPY_HEX)$(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) LAB5_UART_ADC.elf
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
@@ -105,6 +103,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
+.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
 
 -include ../makefile.targets

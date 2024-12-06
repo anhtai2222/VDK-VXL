@@ -74,6 +74,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 			index_buffer = 0;
 		buffer_flag = 1;
 		HAL_UART_Receive_IT(&huart2, &buffer_byte, 1);
+		// dòng quan trọng nhất ngắt sau khi ngắt 1 byte (enable) nhận xong enable l
 	}
 }
 /* USER CODE END 0 */

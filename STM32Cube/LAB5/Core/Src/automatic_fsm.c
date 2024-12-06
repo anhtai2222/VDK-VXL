@@ -65,10 +65,11 @@ void uart_comms_fsm() {
 	switch (cmd_flag) {
 	case RST:
 		if (timer1_flag == 1) {
-			ADC_value = HAL_ADC_GetValue(&hadc1);
-			HAL_UART_Transmit(&huart2, (void*) str,
-					sprintf(str, "!ADC=%d#\r\n", ADC_value), 500);
-			setTimer1(100);
+			 ADC_value = HAL_ADC_GetValue(&hadc1);  // Đọc giá trị ADC
+			 float adc_float_value = (float)ADC_value * 5 / 4095;  // Chuyển đổi giá trị ADC sang điện áp
+			 int len = sprintf(str, "!ADC=%.2f\r\n", adc_float_value);  // In giá trị float với 2 chữ số thập phân
+			 HAL_UART_Transmit(&huart2, (uint8_t*)str, len, 500);  // Truyền chuỗi qua UART
+			 setTimer1(100);
 		}
 		break;
 	case OK:
