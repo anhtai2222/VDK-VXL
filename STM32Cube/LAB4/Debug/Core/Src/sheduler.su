@@ -1,0 +1,6 @@
+sheduler.c:12:6:TaskScheduler_Init	16	static
+sheduler.c:24:6:TaskScheduler_Update	4	static
+sheduler.c:29:9:TaskScheduler_AddTask	24	static
+sheduler.c:47:9:TaskScheduler_DeleteTask	32	static
+sheduler.c:62:6:TaskScheduler_DispatchTasks	24	static
+sheduler.c:85:6:TaskScheduler_ClearAllTasks	16	static
