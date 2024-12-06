@@ -1,8 +1,7 @@
 #include "scheduler.h"
 
-// Đổi tên list và list_run thành taskList và taskRunList
 sList taskList;
-
+sList taskRunList;
 
 void SCH_Init(void) {
 	taskList.head = NULL;
@@ -70,7 +69,57 @@ void SCH_Dispatch_Task(void){
 	}
 }
 
+void add_TaskToRunList(void (*function)()){
+	sTask * newTask = (sTask *) malloc ( sizeof(sTask));
+	newTask->pTask = function;
+	newTask->next = NULL;
+	newTask->prev = NULL;
+	if(taskRunList.numTask == 0){
+		taskRunList.head = newTask;
+		taskRunList.tail = newTask;
 
+	}
+	else{
+		newTask->prev = taskRunList.tail;
+		taskRunList.tail->next = newTask;
+		taskRunList.tail = newTask;
+	}
+	taskRunList.numTask++;
+}
+
+void delete_TaskFromRunList(void (*function)()){
+	if(taskRunList.numTask == 0)
+		return ;
+	if(taskRunList.numTask == 1){
+		sTask * del = taskRunList.head;
+		taskRunList.head = NULL;
+		taskRunList.tail = NULL;
+		free(del);
+		taskRunList.numTask--;
+		return;
+	}
+	sTask * temp = taskRunList.head;
+	while(temp != 0){
+		if(temp->pTask == function){
+			if(temp->prev == NULL){ // delete head
+				temp->next->prev = NULL;
+				taskRunList.head = temp->next;
+			}
+			else if (temp->next == NULL){ //delete tail
+				temp->prev->next = NULL;
+				taskRunList.tail = temp->prev;
+			}
+			else{
+				temp->prev->next = temp->next;
+				temp->next->prev = temp->prev;
+			}
+			taskRunList.numTask--;
+			free(temp);
+			return;
+		}
+		temp = temp->next;
+	}
+}
 
 uint8_t SCH_Delete_Task(void (*function)()){
 	if(taskList.numTask == 0)

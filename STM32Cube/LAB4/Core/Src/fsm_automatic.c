@@ -54,15 +54,15 @@ void task_fsm_lane_0(void) {
             break;
         case RED_STATE:
         	setTrafficLightRed(0);
-        	SCH_Add_Task(task_red_state_lane_0,RED_DURATION*1000,0);
+        	SCH_Add_Task(task_red_state_lane_0,RED_DURATION*500,0);
             break;
         case YELLOW_STATE:
         	setTrafficLightAmber(0);
-        	SCH_Add_Task(task_yellow_state_lane_0,YELLOW_DURATION*1000,0);
+        	SCH_Add_Task(task_yellow_state_lane_0,YELLOW_DURATION*500,0);
             break;
         case GREEN_STATE:
         	setTrafficLightGreen(0);
-              	SCH_Add_Task(task_green_state_lane_0,GREEN_DURATION*1000,0);
+              	SCH_Add_Task(task_green_state_lane_0,GREEN_DURATION*500,0);
                   break;
         default:
             break;
@@ -79,16 +79,16 @@ void task_fsm_lane_1(void) {
             break;
         case RED_STATE:
         	setTrafficLightRed(1);
-        	SCH_Add_Task(task_red_state_lane_1,RED_DURATION*1000,0);
+        	SCH_Add_Task(task_red_state_lane_1,RED_DURATION*500,0);
 
         	break;
         case YELLOW_STATE:
         	setTrafficLightAmber(1);
-        	SCH_Add_Task(task_yellow_state_lane_1,YELLOW_DURATION*1000,0);
+        	SCH_Add_Task(task_yellow_state_lane_1,YELLOW_DURATION*500,0);
              break;
         case GREEN_STATE:
         	setTrafficLightGreen(1);
-        	SCH_Add_Task(task_green_state_lane_1,GREEN_DURATION*1000,0);
+        	SCH_Add_Task(task_green_state_lane_1,GREEN_DURATION*500,0);
         	break;
         default:
         	break;

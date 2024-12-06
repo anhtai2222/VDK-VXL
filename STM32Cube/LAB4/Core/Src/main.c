@@ -102,8 +102,8 @@ int main(void)
 
 //	  SCH_Add_Task(task_fsm_lane_0,0,10);  // Lên lịch cho lane 0
 //    SCH_Add_Task(task_fsm_lane_1, 0,10);  // Lên lịch cho lane 1
-SCH_Add_Task(fsm_manual_run, 50,10);
- SCH_Add_Task(getKeyinput1, 0, 50);
+SCH_Add_Task(fsm_manual_run, 0,10);
+ SCH_Add_Task(getKeyinput1, 0, 10);
 //
 //  SCH_Add_Task(task_display_time_0,0,300);
 //  SCH_Add_Task(task_display_time_1,0,300);
